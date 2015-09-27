@@ -17,20 +17,18 @@ Class ServiceController extends FOSRestController
 	 */
 	public function getServicesAction(Request $request)
 	{
-		$client 	= new Client();
-		$services	= [];
-		$servicesEndpoint 		= [
-			'http://localhost/esport/GameDataService/web/app_dev.php'
-		];
+		$client 		= new Client();
+		$services		= [];
+		$serviceList	= $this->getParameter('app.services');
 
-		foreach($servicesEndpoint as $endpoint) {
-			$response	= $client->get($endpoint.'/routes.json');
-			$config		= json_decode($response->getBody()->getContents());
+		foreach($serviceList as $serviceConfig) {
+			$response	= $client->get($serviceConfig['endpoint'].$serviceConfig['method']);
+			$response	= json_decode($response->getBody()->getContents());
 
-			foreach($config->configuration as $serviceName => $serviceConfig) {
+			foreach($response->configuration as $serviceName => $config) {
 				$services[$serviceName] = [
-					'endpoint'	=> $endpoint,
-					'routes'	=> (array) $serviceConfig->routes,
+					'endpoint'	=> $serviceConfig['endpoint'],
+					'routes'	=> (array) $config->routes,
 				];
 			}
 		}
