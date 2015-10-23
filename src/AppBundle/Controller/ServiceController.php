@@ -12,27 +12,24 @@ use Symfony\Component\HttpFoundation\Request;
 Class ServiceController extends FOSRestController
 {
 	/**
-	 * @param Request $request
 	 * @return array
 	 */
-	public function getServicesAction(Request $request)
+	public function getServicesAction()
 	{
 		$client 		= new Client();
 		$services		= [];
 		$serviceList	= $this->getParameter('app.services');
 
-		foreach($serviceList as $serviceConfig) {
-			$response	= $client->get($serviceConfig['endpoint'].$serviceConfig['method']);
-			$response	= json_decode($response->getBody()->getContents());
+		foreach($serviceList as $serviceName => $serviceConfig) {
+			$response		= $client->get($serviceConfig['endpoint'].$serviceConfig['method']);
+			$serviceRoutes	= json_decode($response->getBody()->getContents(), true);
 
-			foreach($response->configuration as $serviceName => $config) {
-				$services[$serviceName] = [
-					'endpoint'	=> $serviceConfig['endpoint'],
-					'routes'	=> (array) $config->routes,
-				];
-			}
+			$services[$serviceName] = [
+				'endpoint'	=> $serviceConfig['endpoint'],
+				'routes'	=> $serviceRoutes,
+			];
 		}
 
-		return ['services' => $services];
+		return $services;
 	}
 }
