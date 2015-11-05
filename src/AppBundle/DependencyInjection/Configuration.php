@@ -20,20 +20,6 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('app');
 
-        $rootNode
-            ->children()
-                ->arrayNode('services')
-                    ->useAttributeAsKey('key')
-                    ->prototype('array')
-                        ->children()
-                            ->scalarNode('endpoint')->isRequired()->end()
-                            ->scalarNode('method')->isRequired()->end()
-                        ->end()
-                    ->end()
-                ->end()
-            ->end()
-        ;
-
         return $treeBuilder;
     }
 }

@@ -20,7 +20,5 @@ class AppExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
-
-        $container->setParameter($this->getAlias().'.services', $config['services']);
     }
 }

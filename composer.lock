@@ -4,9 +4,60 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c77769cf7d3518520480d4d5ccc56955",
-    "content-hash": "127a40eaa171f0288e4ab98421c50297",
+    "hash": "922631a0f5beb75483a93aa94fee3f2d",
+    "content-hash": "e9d9dfa63b9552633ed5d623d2e7a721",
     "packages": [
+        {
+            "name": "acassan/api-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/acassan/api-bundle.git",
+                "reference": "9e30bd1ee9d63542c3b49f90da6bd37003bbb0d7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/acassan/api-bundle/zipball/9e30bd1ee9d63542c3b49f90da6bd37003bbb0d7",
+                "reference": "9e30bd1ee9d63542c3b49f90da6bd37003bbb0d7",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.1",
+                "php": ">=5.3.2",
+                "symfony/framework-bundle": "~2.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=3.7"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "ApiBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "alexis CASSAN",
+                    "email": "alexiscassan@gmail.com"
+                },
+                {
+                    "name": "ApiBundle Contributors",
+                    "homepage": "https://github.com/acassan/api-bundle#contributors"
+                }
+            ],
+            "description": "Api bundle to synchronize with Api service",
+            "keywords": [
+                "Symfony2",
+                "api",
+                "bundle",
+                "service"
+            ],
+            "time": "2015-11-05 16:10:09"
+        },
         {
             "name": "doctrine/annotations",
             "version": "v1.2.7",
@@ -1845,7 +1896,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/b8e7bb534d2ee2f0429ff178296e29eb30bb7e5c",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/8c4e756c1b1460d3497638fd3778824185779041",
                 "reference": "b8e7bb534d2ee2f0429ff178296e29eb30bb7e5c",
                 "shasum": ""
             },
@@ -2168,7 +2219,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "symfony/symfony": 20
+        "symfony/symfony": 20,
+        "acassan/api-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
